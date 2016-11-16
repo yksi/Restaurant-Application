@@ -1,0 +1,21 @@
+{
+    "name": "krushelnytskiy/soft-group-test",
+    "description": "SoftGroup Test Project",
+    "type": "project",
+    "require": {
+        "zendframework/zendframework": "^3.0"
+    },
+    "license": "GPL v3",
+    "authors": [
+        {
+            "name": "Vitaliy Krushelnytskiy",
+            "email": "embox@ukr.net"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/"
+        }
+    }
+}

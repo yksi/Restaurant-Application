@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('Restaurant Application')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink()
+            ->prependStylesheet($this->basePath('assets/css/bootstrap.min.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('assets/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('assets/js/jquery-3.1.1.min.js'))
+        ?>
+    </head>
+    <body>
+        <?= $this->partial('partial/menu.phtml', []); ?>
+        <div class="container">
+            <?= $this->content; ?>
+        </div>
+    </body>
+</html>
