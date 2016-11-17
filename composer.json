@@ -3,7 +3,9 @@
     "description": "SoftGroup Test Project",
     "type": "project",
     "require": {
-        "zendframework/zendframework": "^3.0"
+        "zendframework/zendframework": "^3.0",
+        "doctrine/doctrine-orm-module": "*.*",
+        "doctrine/migrations": "*.*"
     },
     "license": "GPL v3",
     "authors": [
@@ -15,7 +17,9 @@
     "minimum-stability": "beta",
     "autoload": {
         "psr-4": {
-            "Application\\": "module/Application/src/"
+            "Application\\": "module/Application/src/",
+            "Application\\Entity\\": "module/Application/src/Application/Entity/"
+
         }
     }
 }
