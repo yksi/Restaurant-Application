@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use Application\Entity\User;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 

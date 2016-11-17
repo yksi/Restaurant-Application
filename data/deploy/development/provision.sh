@@ -44,3 +44,7 @@ sudo service redis restart
 #Install composer
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
+
+#Install project
+mysql -u root -e "DROP DATABASE IF EXISTS development; CREATE DATABASE development;";
+cd /vagrant/soft-group-test; php /usr/local/bin/composer install
