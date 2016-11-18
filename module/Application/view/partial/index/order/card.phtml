@@ -1,0 +1,12 @@
+<div class="col-md-3 col-card">
+    <h4 class="text-primary">
+        <?= $this->order->getName() ?>
+    </h4>
+    <h5 class="text-muted">
+        Dish: <b><?= $this->order->getDish(); ?></b>
+        <br>
+        Waiter: <b><?= $this->order->getWaiter()->getName(); ?></b>
+        <br>
+        Status: <div class="label label-primary"><?= ucfirst($this->order->getStatus()); ?></div>
+    </h5>
+</div>

@@ -11,6 +11,7 @@
         <!-- Le styles -->
         <?= $this->headLink()
             ->prependStylesheet($this->basePath('assets/css/bootstrap.min.css'))
+            ->prependStylesheet($this->basePath('assets/css/stylish.css'))
         ?>
 
         <!-- Scripts -->
@@ -20,7 +21,24 @@
         ?>
     </head>
     <body>
-        <?= $this->partial('partial/menu.phtml', []); ?>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Restaurant App</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <?= $this->render('partial/menu/' . (null === $this->user ? 'guest.phtml' :  'user.phtml')); ?>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
         <div class="container">
             <?= $this->content; ?>
         </div>

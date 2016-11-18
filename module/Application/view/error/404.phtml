@@ -1,0 +1,32 @@
+<?php use Zend\Mvc\Application; ?>
+<div class="jumbotron">
+    <h1>Page not found</h1>
+    <p>
+        Page, you are looking for does not exist
+        <?php if (! empty($this->reason)) :
+        switch ($this->reason) {
+            case Application::ERROR_CONTROLLER_CANNOT_DISPATCH:
+                $reasonMessage = 'The requested controller was unable to dispatch the request.';
+                break;
+            case Application::ERROR_MIDDLEWARE_CANNOT_DISPATCH:
+                $reasonMessage = 'The requested middleware was unable to dispatch the request.';
+                break;
+            case Application::ERROR_CONTROLLER_NOT_FOUND:
+                $reasonMessage = 'The requested controller could not be mapped to an existing controller class.';
+                break;
+            case Application::ERROR_CONTROLLER_INVALID:
+                $reasonMessage = 'The requested controller was not dispatchable.';
+                break;
+            case Application::ERROR_ROUTER_NO_MATCH:
+                $reasonMessage = 'The requested URL could not be matched by routing.';
+                break;
+            default:
+                $reasonMessage = 'We cannot determine at this time why a 404 was generated.';
+                break;
+        }
+        ?>
+        <p>Reason: </p>
+        <p class="well text-muted"><?= $reasonMessage ?></p>
+        <?php endif ?>
+    </p>
+</div>

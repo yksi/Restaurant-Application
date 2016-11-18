@@ -14,8 +14,26 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\DashboardController::class,
                         'action'     => 'index',
+                    ],
+                ],
+            ],
+            'dashboard' => [
+                'type' => Segment::class,
+                'options' => [
+                    'route'    => '/dasboard/[:action]',
+                    'defaults' => [
+                        'controller' => Controller\DashboardController::class,
+                    ],
+                ],
+            ],
+            'auth' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/auth[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\AuthController::class,
                     ],
                 ],
             ],
@@ -24,7 +42,7 @@ return [
                 'options' => [
                     'route'    => '/application[/:action]',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\DashboardController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -33,7 +51,9 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
+            Controller\DashboardController::class => InvokableFactory::class,
+            Controller\AuthController::class => InvokableFactory::class,
+
         ],
     ],
     'view_manager' => [
