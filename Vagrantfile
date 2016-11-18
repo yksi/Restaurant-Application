@@ -5,7 +5,7 @@ Vagrant.configure('2') do |config|
   config.vm.synced_folder '.', '/vagrant/soft-group-test'
 
   config.vm.provider :lxc do |lxc|
-    lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
+    lxc.customize 'cgroup.memory.limit_in_bytes', '512M'
   end
 
   config.ssh.username = config.ssh.password = 'vagrant'

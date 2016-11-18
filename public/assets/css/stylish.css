@@ -1,0 +1,7 @@
+.col-card {
+    min-height: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+    margin-right: 30px;
+    border: 1px solid #e1e1e1;
+}

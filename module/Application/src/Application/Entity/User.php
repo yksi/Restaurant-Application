@@ -43,7 +43,7 @@ class User
     private $role;
 
     /**
-     * @var string
+     * @var bool
      * @ORM\Column(type="boolean", options={"default": true})
      */
     private $active;
@@ -89,9 +89,9 @@ class User
     }
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getActive(): string
+    public function getActive(): bool
     {
         return $this->active;
     }
@@ -129,9 +129,9 @@ class User
     }
 
     /**
-     * @param string $active
+     * @param bool $active
      */
-    public function setActive(string $active)
+    public function setActive(bool $active)
     {
         $this->active = $active;
     }
@@ -144,5 +144,6 @@ class User
     {
         return sha1(md5($password) . sha1($password));
     }
+
 }
 

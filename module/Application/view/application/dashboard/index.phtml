@@ -1,0 +1,15 @@
+<div id="app-dashboard">
+    <?= $this->dashboard; ?>
+</div>
+
+<?php if (true === isset($this->errors)) : ?>
+    <div id="app-errors">
+        <div class="alert alert-danger">
+            <ul>
+                <?php foreach ($this->errors as $error) : ?>
+                    <li><?= $error; ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

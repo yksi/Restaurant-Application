@@ -1,0 +1,8 @@
+<a href="<?= $this->url('dashboard', ['action' => 'order']); ?>" class="btn btn-primary">Create Order</a>
+<div class="page-header">List</div>
+
+<div class="row">
+    <?php foreach ($this->orders as $order) : ?>
+        <?= $this->partial('partial/index/order/card.phtml', ['order' => $order]); ?>
+    <?php endforeach; ?>
+</div>
