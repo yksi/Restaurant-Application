@@ -5,7 +5,8 @@
     "require": {
         "zendframework/zendframework": "^3.0",
         "doctrine/doctrine-orm-module": "*.*",
-        "doctrine/migrations": "*.*"
+        "doctrine/migrations": "*.*",
+        "cboden/ratchet": "^0.3.5"
     },
     "license": "GPL v3",
     "authors": [

@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <?= $this->order->getName(); ?>
+            </div>
+            <div class="panel-body">
+                Dish: <b><?= $this->order->getDish(); ?></b>
+                <br>
+                Cook: <b><?= $this->order->getCook()->getName(); ?></b>
+                <br>
+                Created: <b><?= $this->order->getCreated()->format('H:i:s'); ?></b>
+                <br>
+                Minutes: <?= $this->order->getMinutes(); ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>

@@ -2,12 +2,14 @@
 
 namespace Application\Service;
 use Doctrine\ORM\EntityManager;
+use Ratchet\ConnectionInterface;
+use Ratchet\MessageComponentInterface;
 
 /**
  * Class AbstractService
  * @package Application\Service
  */
-abstract class AbstractService
+abstract class AbstractService implements MessageComponentInterface
 {
 
     /**
@@ -25,6 +27,19 @@ abstract class AbstractService
      * @var EntityManager
      */
     protected $entityManager;
+
+    /**
+     * @var \SplObjectStorage
+     */
+    protected $clients;
+
+    /**
+     * AbstractService constructor.
+     */
+    public function __construct()
+    {
+        $this->clients = new \SplObjectStorage;
+    }
 
     /**
      * @return array
@@ -93,4 +108,43 @@ abstract class AbstractService
      * @return string
      */
     abstract function getView();
+
+    /**
+     * @param ConnectionInterface $from
+     * @param string $message
+     */
+    function onMessage(ConnectionInterface $from, $message)
+    {
+        foreach ($this->clients as $client) {
+            if ($from !== $client) {
+                $client->send('render');
+            }
+        }
+    }
+
+    /**
+     * @param ConnectionInterface $conn
+     */
+    function onOpen(ConnectionInterface $conn)
+    {
+        $this->clients->attach($conn);
+    }
+
+    /**
+     * @param ConnectionInterface $conn
+     */
+    function onClose(ConnectionInterface $conn)
+    {
+        $this->clients->detach($conn);
+    }
+
+    /**
+     * @param ConnectionInterface $conn
+     * @param \Exception $e
+     */
+    function onError(ConnectionInterface $conn, \Exception $e)
+    {
+    }
+
+
 }

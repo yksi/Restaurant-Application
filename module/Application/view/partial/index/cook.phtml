@@ -1,1 +1,5 @@
-Waiter panel
+<?= $this->partial('partial/index/general/heading.phtml'); ?>
+<?php foreach ($this->orders as $order) : ?>
+    <?php /** @var \Application\Entity\Order $order */ ?>
+    <?= $this->partial('partial/index/cook/' . $order->getStatus() . '.phtml', ['order' => $order]); ?>
+<?php endforeach; ?>

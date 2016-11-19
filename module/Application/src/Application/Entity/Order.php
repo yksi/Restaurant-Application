@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
 /**
- * @ORM\Entity(repositoryClass="Application\Entity\Repository\OrderRepository")
+ * @ORM\Entity
  * @ORM\Table(name="orders")
  */
 class Order
@@ -15,10 +15,11 @@ class Order
     /**
      * Order statuses
      */
-    const STATUS_NEW  = 'new';
-    const STATUS_WAIT = 'wait';
-    const STATUS_DONE = 'done';
-    const STATUS_FAIL = 'fail';
+    const STATUS_NEW    = 'new';
+    const STATUS_WAIT   = 'wait';
+    const STATUS_DONE   = 'done';
+    const STATUS_FAIL   = 'fail';
+    const STATUS_CLOSED = 'closed';
 
     /**
      * @var int
@@ -133,7 +134,7 @@ class Order
     /**
      * @return int
      */
-    public function getMinutes(): int
+    public function getMinutes()
     {
         return $this->minutes;
     }

@@ -2,6 +2,7 @@
 
 namespace Application\Controller;
 
+use Zend\Mvc\MvcEvent;
 use Application\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Zend\Authentication\AuthenticationService;
@@ -18,14 +19,14 @@ abstract class AbstractController extends AbstractActionController
 {
 
     /**
-     * @param \Zend\Mvc\MvcEvent $e
+     * @param MvcEvent $event
      * @return mixed
      */
-    public function onDispatch( \Zend\Mvc\MvcEvent $e )
+    public function onDispatch(MvcEvent $event)
     {
-        $e->getViewModel()->setVariable('user', $this->getUser());
+        $event->getViewModel()->setVariable('user', $this->getUser());
 
-        return parent::onDispatch( $e );
+        return parent::onDispatch($event);
     }
 
     /**

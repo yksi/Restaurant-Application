@@ -15,6 +15,12 @@ return [
                 ]
             ]
         ],
+        'configuration' => [
+            'orm_default' => [
+                'proxy_dir' => 'data/proxy',
+                'proxy_namespace' => 'Doctrine\Proxy',
+            ]
+        ],
         'migrations_configuration' => array(
             'orm_default' => array(
                 'directory' => 'config/database/migrations',
@@ -30,8 +36,8 @@ return [
             ],
             'orm_default' => [
                 'drivers' => [
-                    'Application\Entity' => 'application_entities'
-                ]
+                    'Application\Entity' => 'application_entities',
+                ],
             ],
         ],
     ]

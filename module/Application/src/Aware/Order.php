@@ -35,6 +35,12 @@ class Order extends Form
             ]
         );
 
+        $this->add(
+            [
+                'name' => 'minutes',
+                'type' => 'text'
+            ]
+        );
 
         $this->setAttribute('method', Request::METHOD_POST);
     }
