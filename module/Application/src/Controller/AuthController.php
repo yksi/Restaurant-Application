@@ -7,6 +7,7 @@ use Application\Aware\Login;
 use Application\Aware\Register;
 use Application\Entity\User;
 use Zend\Authentication\Result;
+use Zend\Mvc\MvcEvent;
 use Zend\View\Model\ViewModel;
 
 /**
@@ -17,16 +18,16 @@ class AuthController extends AbstractController
 {
 
     /**
-     * @param \Zend\Mvc\MvcEvent $e
+     * @param MvcEvent $event
      * @return mixed
      */
-    public function onDispatch( \Zend\Mvc\MvcEvent $e )
+    public function onDispatch(MvcEvent $event)
     {
         if (null !== $this->getUser()) {
             $this->redirect()->toRoute('home');
         }
 
-        return parent::onDispatch( $e );
+        return parent::onDispatch($event);
     }
 
     /**
@@ -89,7 +90,7 @@ class AuthController extends AbstractController
                 $user->setEmail($form->get('email')->getValue());
                 $user->setName($form->get('name')->getValue());
                 $user->setPassword($form->get('password')->getValue());
-                $user->setRole($form->get('password')->getValue());
+                $user->setRole($form->get('role')->getValue());
                 $user->setActive(true);
 
                 $this->getEntityManager()->persist($user);
@@ -100,6 +101,7 @@ class AuthController extends AbstractController
 
                 if ($result->getCode() === Result::SUCCESS) {
                     $this->getAuthService()->getStorage()->write($user->getId());
+                    $this->redirect()->toRoute('home');
                 }
             }
         }

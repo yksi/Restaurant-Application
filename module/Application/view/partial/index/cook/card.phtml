@@ -1,0 +1,29 @@
+<div class="col-md-3">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><?= $this->order->getName(); ?></div>
+        <div class="panel-body">
+            <form action="<?= $this->url('dashboard', ['action' => 'order']); ?>" id="order_<?= $this->order->getId(); ?>">
+                <input type="hidden" name="dish" value="<?= $this->order->getDish(); ?>">
+                <input type="hidden" name="name" value="<?= $this->order->getName(); ?>">
+                <input type="hidden" name="id" value="<?= $this->order->getId(); ?>">
+                Dish: <b><?= $this->order->getDish(); ?></b>
+                <br>
+                Waiter: <b><?= $this->order->getWaiter()->getName(); ?></b>
+                <br>
+                Status: <div class="label label-primary"><?= ucfirst($this->order->getStatus()); ?></div>
+                <br>
+                <?php if ($this->order->getStatus() === \Application\Entity\Order::STATUS_NEW) : ?>
+                    Minutes: <input type="text" class="form-control" name="minutes">
+                    <input type="hidden" name="status" value="<?= \Application\Entity\Order::STATUS_WAIT; ?>">
+                    <br>
+                    <a class="btn btn-success get-order" data-order="<?= $this->order->getId(); ?>">Get order</a>
+                <?php elseif ($this->order->getStatus() === \Application\Entity\Order::STATUS_WAIT) : ?>
+                    Minutes: <?= $this->order->getMinutes(); ?>
+                    <input type="hidden" name="status" value="<?= \Application\Entity\Order::STATUS_DONE; ?>">
+                    <br>
+                    <a class="btn btn-success get-order" data-order="<?= $this->order->getId(); ?>">Done</a>
+                <?php endif; ?>
+            </form>
+        </div>
+    </div>
+</div>

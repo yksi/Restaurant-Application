@@ -24,7 +24,7 @@ class Register extends Form
         $this->add(
             [
                 'name' => 'email',
-                'type' => 'text'
+                'type' => 'text',
             ]
         );
 
@@ -42,6 +42,12 @@ class Register extends Form
             ]
         );
 
+        $this->add(
+            [
+                'name' => 'role',
+                'type' => 'text'
+            ]
+        );
 
         $this->setAttribute('method', Request::METHOD_POST);
     }

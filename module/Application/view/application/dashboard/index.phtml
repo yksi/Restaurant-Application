@@ -1,3 +1,8 @@
+<?=
+$this->headScript()
+    ->prependFile($this->basePath('assets/js/script.js'))
+?>
+<input class="param" type="hidden" name="status" value="new">
 <div id="app-dashboard">
     <?= $this->dashboard; ?>
 </div>

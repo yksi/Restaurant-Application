@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <?= $this->order->getName(); ?>
+            </div>
+            <div class="panel-body">
+                <form action="<?= $this->url('dashboard', ['action' => 'order']); ?>" id="order_<?= $this->order->getId(); ?>">
+                    <input type="hidden" name="dish" value="<?= $this->order->getDish(); ?>">
+                    <input type="hidden" name="name" value="<?= $this->order->getName(); ?>">
+                    <input type="hidden" name="id" value="<?= $this->order->getId(); ?>">
+                    Dish: <b><?= $this->order->getDish(); ?></b>
+                    <br>
+                    Waiter: <b><?= $this->order->getWaiter()->getName(); ?></b>
+                    <br>
+                    Created: <b><?= $this->order->getCreated()->format('H:i:s'); ?></b>
+                    <br>
+                    Minutes: <input type="text" class="form-control" name="minutes">
+                    <input type="hidden" name="status" value="<?= \Application\Entity\Order::STATUS_WAIT; ?>">
+                    <br>
+                    <a class="btn btn-success get-order" data-order="<?= $this->order->getId(); ?>">Get order</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-offset-8"></div>
+</div>
