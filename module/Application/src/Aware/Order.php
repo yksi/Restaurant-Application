@@ -4,6 +4,8 @@ namespace Application\Aware;
 
 use Zend\Form\Form;
 use Zend\Http\Request;
+use Zend\Validator\InArray;
+use Zend\Validator\StringLength;
 
 /**
  * Class Register
@@ -24,21 +26,52 @@ class Order extends Form
         $this->add(
             [
                 'name' => 'name',
-                'type' => 'text'
+                'type' => 'text',
+                'required' => false,
+                'validation_group' => [
+                    new StringLength(
+                        [
+                            'min' => 3,
+                            'max' => 100
+                        ]
+                    )
+                ],
             ]
         );
 
         $this->add(
             [
                 'name' => 'dish',
-                'type' => 'text'
+                'type' => 'text',
+                'required' => true,
+                'validation_group' => [
+                    new StringLength(
+                        [
+                            'min' => 3,
+                            'max' => 100
+                        ]
+                    )
+                ],
             ]
         );
 
         $this->add(
             [
                 'name' => 'minutes',
-                'type' => 'text'
+                'type' => 'text',
+                'required' => false,
+                'validation_group' => [
+                    new InArray(
+                        [
+                            'haystack' => [
+                                \Application\Entity\Order::STATUS_CLOSED,
+                                \Application\Entity\Order::STATUS_DONE,
+                                \Application\Entity\Order::STATUS_WAIT,
+                                \Application\Entity\Order::STATUS_NEW,
+                            ]
+                        ]
+                    )
+                ],
             ]
         );
 

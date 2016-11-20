@@ -4,6 +4,9 @@ namespace Application\Aware;
 
 use Zend\Form\Form;
 use Zend\Http\Request;
+use Zend\Validator\EmailAddress;
+use Zend\Validator\InArray;
+use Zend\Validator\StringLength;
 
 /**
  * Class Register
@@ -25,27 +28,61 @@ class Register extends Form
             [
                 'name' => 'email',
                 'type' => 'text',
+                'required' => true,
+                'validators' => [
+                    new EmailAddress()
+                ]
+
             ]
         );
 
         $this->add(
             [
                 'name' => 'name',
-                'type' => 'text'
+                'type' => 'text',
+                'required' => true,
+                'validators' => [
+                    new StringLength(
+                        [
+                            'min' => 6,
+                            'max' => 100
+                        ]
+                    )
+                ],
             ]
         );
 
         $this->add(
             [
                 'name' => 'password',
-                'type' => 'password'
+                'type' => 'password',
+                'required' => true,
+                'validators' => [
+                    new StringLength(
+                        [
+                            'min' => 6,
+                            'max' => 100
+                        ]
+                    )
+                ],
             ]
         );
 
         $this->add(
             [
                 'name' => 'role',
-                'type' => 'text'
+                'type' => 'text',
+                'required' => true,
+                'validators' => [
+                    new InArray(
+                        [
+                            'haystack' => [
+                                'cook',
+                                'waiter'
+                            ]
+                        ]
+                    )
+                ]
             ]
         );
 
