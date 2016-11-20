@@ -1,20 +1,20 @@
 <div class="row">
     <div class="well col-md-offset-4 col-md-4">
-        <div>Register account</div>
+        <h4 class="text-center">Register account</h4>
         <form method="post">
             <input name="name" type="text" class="form-control" placeholder="Name">
+            <br>
             <input name="email" type="text" class="form-control" placeholder="Email">
-            <input name="password" type="text" class="form-control" placeholder="Password">
-            <div class="row">
-                <label for="role_waiter" class="col-md-6">
-                    <input id="role_waiter" name="role" type="radio" class="form-control" value="waiter">
-                    <span>Waiter</span>
-                </label>
-                <label for="role_waiter" class="col-md-6">
-                    <input id="role_cook" name="role" type="radio" class="form-control" value="cook">
-                    <span>Cook</span>
-                </label>
-            </div>
+            <br>
+            <input name="password" type="password" class="form-control" placeholder="Password">
+            <label for="role_waiter">
+                <input id="role_waiter" name="role" type="radio" class="form-control" value="waiter">
+                <span>Waiter</span>
+            </label>
+            <label for="role_waiter">
+                <input id="role_cook" name="role" type="radio" class="form-control" value="cook">
+                <span>Cook</span>
+            </label>
             <p class="text-right">
                 <button class="btn btn-default">Register</button>
             </p>

@@ -5,17 +5,13 @@ var view = new View();
  */
 var connection = new WebSocket('ws://soft-group-test.dev:8080');
 
-jQuery(document).ready(function () {
-    connection.onmessage = function() {
-        console.log('message');
-        view.render();
-    };
+connection.onmessage = function() {
+    view.render();
+};
 
-    connection.onopen = function () {
-        console.log('initial');
-        this.send('initial');
-    };
-});
+connection.onopen = function () {
+    this.send('initial');
+};
 
 /**
  * @constructor

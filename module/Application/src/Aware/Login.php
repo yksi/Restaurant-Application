@@ -4,6 +4,8 @@ namespace Application\Aware;
 
 use Zend\Form\Form;
 use Zend\Http\Request;
+use Zend\Validator\EmailAddress;
+use Zend\Validator\StringLength;
 
 /**
  * Class Register
@@ -24,17 +26,29 @@ class Login extends Form
         $this->add(
             [
                 'name' => 'email',
-                'type' => 'text'
+                'type' => 'text',
+                'required' => true,
+                'validators' => [
+                    new EmailAddress()
+                ]
             ]
         );
 
         $this->add(
             [
                 'name' => 'password',
-                'type' => 'password'
+                'type' => 'password',
+                'required' => true,
+                'validation_group' => [
+                    new StringLength(
+                        [
+                            'min' => 6,
+                            'max' => 100
+                        ]
+                    )
+                ],
             ]
         );
-
 
         $this->setAttribute('method', Request::METHOD_POST);
     }
